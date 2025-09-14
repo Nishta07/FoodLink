@@ -1,93 +1,99 @@
 // src/App.jsx
 import React from "react";
 import { motion } from "framer-motion";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
+import "./App.css";
+
 
 export default function App() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-green-50 to-white">
       {/* Navbar */}
-      <nav className="flex justify-between items-center px-8 py-4 shadow-md bg-white">
-        <h1 className="text-2xl font-bold text-green-700">FoodLink</h1>
-        <div className="space-x-4">
-          <a href="#features" className="text-gray-700 hover:text-green-600">
+      <nav className="fixed w-full top-0 left-0 z-50 flex justify-between items-center px-8 py-4 backdrop-blur-md bg-white/70 shadow-md">
+        <h1 className="text-2xl font-extrabold text-green-700 tracking-wide">
+          🌱 FoodLink
+        </h1>
+        <div className="space-x-6 font-medium">
+          <a href="#features" className="hover:text-green-600 transition">
             Features
           </a>
-          <a href="#about" className="text-gray-700 hover:text-green-600">
+          <a href="#about" className="hover:text-green-600 transition">
             About
           </a>
-          <a href="#contact" className="text-gray-700 hover:text-green-600">
+          <a href="#contact" className="hover:text-green-600 transition">
             Contact
           </a>
-          <Button className="bg-green-600 text-white hover:bg-green-700">
+          <button className="bg-green-600 text-white px-4 py-2 rounded-lg hover:scale-105 transition">
             Get Started
-          </Button>
+          </button>
         </div>
       </nav>
 
       {/* Hero Section */}
-      <section className="flex flex-col items-center text-center py-20 px-6">
+      <section className="relative flex flex-col items-center text-center py-32 px-6 overflow-hidden">
+        {/* Animated blob background */}
+        <div className="absolute -top-40 -left-40 w-96 h-96 bg-green-300 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-pulse"></div>
+        <div className="absolute -bottom-40 -right-40 w-96 h-96 bg-yellow-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-pulse"></div>
+
         <motion.h2
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="text-5xl font-bold text-green-700 mb-6"
+          className="text-6xl font-extrabold bg-gradient-to-r from-green-600 to-emerald-400 bg-clip-text text-transparent mb-6"
         >
           Reduce Food Waste, Feed More People
         </motion.h2>
-        <p className="text-lg text-gray-600 max-w-2xl mb-8">
+        <p className="text-lg text-gray-700 max-w-2xl mb-8 leading-relaxed">
           FoodLink connects restaurants, hotels, and event caterers with NGOs
           and volunteers to redistribute surplus food efficiently.
         </p>
-        <Button className="bg-green-600 text-white px-6 py-3 rounded-xl shadow-md hover:bg-green-700">
-          Join the Movement
-        </Button>
+        <button className="bg-green-600 text-white px-8 py-4 text-lg rounded-xl shadow-lg hover:bg-green-700 hover:scale-105 transition">
+          🌍 Join the Movement
+        </button>
       </section>
 
       {/* Features Section */}
-      <section id="features" className="py-16 px-10 bg-gray-50">
+      <section id="features" className="py-20 px-10 bg-gray-50">
         <h3 className="text-3xl font-bold text-center text-green-700 mb-12">
           Key Features
         </h3>
         <div className="grid md:grid-cols-3 gap-8">
-          <Card className="shadow-lg">
-            <CardContent className="p-6 text-center">
-              <h4 className="text-xl font-semibold mb-4">For Restaurants</h4>
-              <p className="text-gray-600">
-                List surplus food quickly with pickup time & location. Reduce
-                waste while helping the community.
-              </p>
-            </CardContent>
-          </Card>
+          <div className="shadow-lg hover:shadow-2xl hover:-translate-y-2 transition rounded-2xl p-8 text-center bg-white">
+            <h4 className="text-xl font-semibold mb-4 text-green-700">
+              🍽️ For Restaurants
+            </h4>
+            <p className="text-gray-600">
+              List surplus food quickly with pickup time & location. Reduce
+              waste while helping the community.
+            </p>
+          </div>
 
-          <Card className="shadow-lg">
-            <CardContent className="p-6 text-center">
-              <h4 className="text-xl font-semibold mb-4">For NGOs</h4>
-              <p className="text-gray-600">
-                Browse and claim available food nearby. Ensure timely
-                distribution to those in need.
-              </p>
-            </CardContent>
-          </Card>
+          <div className="shadow-lg hover:shadow-2xl hover:-translate-y-2 transition rounded-2xl p-8 text-center bg-white">
+            <h4 className="text-xl font-semibold mb-4 text-green-700">
+              🤝 For NGOs
+            </h4>
+            <p className="text-gray-600">
+              Browse and claim available food nearby. Ensure timely distribution
+              to those in need.
+            </p>
+          </div>
 
-          <Card className="shadow-lg">
-            <CardContent className="p-6 text-center">
-              <h4 className="text-xl font-semibold mb-4">Impact Tracking</h4>
-              <p className="text-gray-600">
-                See how much food has been saved and how many people have been
-                served via FoodLink.
-              </p>
-            </CardContent>
-          </Card>
+          <div className="shadow-lg hover:shadow-2xl hover:-translate-y-2 transition rounded-2xl p-8 text-center bg-white">
+            <h4 className="text-xl font-semibold mb-4 text-green-700">
+              📊 Impact Tracking
+            </h4>
+            <p className="text-gray-600">
+              See how much food has been saved and how many people have been
+              served via FoodLink.
+            </p>
+          </div>
         </div>
       </section>
 
       {/* About Section */}
-      <section id="about" className="py-16 px-10">
+      <section id="about" className="py-20 px-10">
         <div className="max-w-4xl mx-auto text-center">
           <h3 className="text-3xl font-bold text-green-700 mb-6">About Us</h3>
-          <p className="text-gray-600 text-lg">
+          <p className="text-gray-600 text-lg leading-relaxed">
             At FoodLink, we believe no good food should go to waste. By linking
             local food providers with NGOs and volunteers, we are building a
             community-driven ecosystem to fight hunger and reduce waste.
@@ -96,7 +102,7 @@ export default function App() {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-16 px-10 bg-green-50">
+      <section id="contact" className="py-20 px-10 bg-green-50">
         <h3 className="text-3xl font-bold text-center text-green-700 mb-6">
           Get in Touch
         </h3>
@@ -105,17 +111,28 @@ export default function App() {
           today!
         </p>
         <div className="flex justify-center">
-          <Button className="bg-green-600 text-white px-6 py-3 rounded-xl shadow-md hover:bg-green-700">
+          <button className="bg-green-600 text-white px-6 py-3 rounded-xl shadow-md hover:bg-green-700">
             Contact Us
-          </Button>
+          </button>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="py-6 text-center bg-white shadow-inner">
-        <p className="text-gray-600">
+      <footer className="py-8 text-center bg-white shadow-inner border-t border-green-200">
+        <p className="text-gray-600 mb-3">
           © {new Date().getFullYear()} FoodLink. All rights reserved.
         </p>
+        <div className="flex justify-center space-x-6 text-green-600">
+          <a href="#" className="hover:text-green-800">
+            🐦 Twitter
+          </a>
+          <a href="#" className="hover:text-green-800">
+            📘 Facebook
+          </a>
+          <a href="#" className="hover:text-green-800">
+            📸 Instagram
+          </a>
+        </div>
       </footer>
     </div>
   );

@@ -1,38 +1,195 @@
-.App {
+/* App.css */
+
+/*-------------- Variables & Base Styles --------------*/
+:root {
+  --primary-green: #4CAF50;
+  --secondary-green: #388E3C;
+  --accent-bg: #e8f5e9;
+  --font-main: 'Segoe UI', 'Roboto', Arial, sans-serif;
+  --shadow: 0 4px 16px rgba(60, 79, 52, 0.08);
+}
+html, body {
+  min-height: 100vh;
+  margin: 0;
+  font-family: var(--font-main);
+  background: #f9fdfb;
+  color: #222;
+}
+
+/*-------------- Header & Navigation --------------*/
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--accent-bg);
+  padding: 1.2rem 2rem 0.8rem 2rem;
+  border-radius: 0 0 14px 14px;
+  box-shadow: var(--shadow);
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  font-size: 2.1rem;
+  font-weight: 700;
+  color: var(--secondary-green);
+}
+
+.logo span {
+  margin-right: 10px;
+}
+
+.nav {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.nav a {
+  color: #388e3c;
+  font-weight: 600;
+  padding: 8px 14px;
+  border-radius: 5px;
+  transition: background 0.23s;
+  font-size: 1.05rem;
+}
+
+.nav a.active, .nav a:hover {
+  background: var(--primary-green);
+  color: #fff;
+  box-shadow: 0 2px 4px rgba(76,175,80,0.08);
+}
+
+/*-------------- Hero / Main Section --------------*/
+.hero {
+  background: var(--accent-bg);
+  margin: 2rem auto 1.5rem auto;
+  padding: 2.5rem 2rem 2rem 2rem;
+  border-radius: 14px;
+  box-shadow: var(--shadow);
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.hero h2 {
+  font-size: 2.2rem;
+  color: var(--primary-green);
+  margin-bottom: 1rem;
+}
+.hero p {
+  font-size: 1.17rem;
+  color: #333;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+.cta-btn {
+  margin-top: 1.4rem;
+  background: var(--primary-green);
+  color: #fff;
+  border: none;
+  padding: 12px 32px;
+  font-weight: 700;
+  font-size: 1.1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.13s;
+  box-shadow: 0 2px 8px rgba(44,151,61,0.08);
+}
+
+.cta-btn:hover {
+  background: var(--secondary-green);
+  transform: scale(1.05);
+}
+
+/*-------------- Features Grid --------------*/
+.features {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  margin: 2.5rem 0 1.5rem 0;
+}
+
+.feature-card {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: var(--shadow);
+  padding: 1.3rem;
+  text-align: left;
+  border-left: 6px solid var(--primary-green);
+  transition: box-shadow 0.14s;
+}
+
+.feature-card h3 {
+  margin-top: 0;
+  font-size: 1.25rem;
+  color: var(--secondary-green);
+}
+
+.feature-card p {
+  font-size: 1.07rem;
+}
+
+.feature-card:hover {
+  box-shadow: 0 6px 24px rgba(76,175,80,0.15);
+}
+
+/*-------------- About & Contact --------------*/
+.about, .contact {
+  background: var(--accent-bg);
+  padding: 1.3rem;
+  border-radius: 8px;
+  margin: 2rem 0;
+  box-shadow: var(--shadow);
+}
+
+.about h4, .contact h4 {
+  color: var(--primary-green);
+  margin-top: 0;
+  margin-bottom: 0.7rem;
+}
+
+/*-------------- Footer --------------*/
+footer {
+  margin-top: 40px;
+  padding: 18px 0;
+  text-align: center;
+  font-size: 1.02rem;
+  color: #555;
+  background: #f6fff8;
+  border-top: 1px solid #cce7cb;
+}
+
+.footer-links a {
+  margin: 0 10px;
+  color: #388e3c;
+  transition: color 0.2s;
+}
+
+.footer-links a:hover {
+  color: var(--primary-green);
+  text-decoration: underline;
+}
+
+/*-------------- Responsive Design --------------*/
+@media (max-width: 900px) {
+  .header {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .hero, .about, .contact {
+    padding: 1.3rem 0.8rem;
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+@media (max-width: 600px) {
+  :root {
+    font-size: 16px;
   }
-  to {
-    transform: rotate(360deg);
+  .header {
+    padding: 1rem 0.6rem 0.6rem 0.6rem;
+  }
+  .features {
+    grid-template-columns: 1fr;
+  }
+  .footer-links {
+    display: block;
+    margin: 0.8rem 0 0 0;
   }
 }
