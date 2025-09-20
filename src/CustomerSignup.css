@@ -1,13 +1,19 @@
-/* CustomerSignup.css */
+/* ===================================================================
+   CustomerSignup.css - Modern Customer Signup Page Styles
+   =================================================================== */
 
-/* Reset and Base Styles */
+/* ===================================================================
+   RESET & BASE STYLES
+   =================================================================== */
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
-/* Main Container */
+/* ===================================================================
+   LAYOUT & CONTAINER
+   =================================================================== */
 .signup-container {
   min-height: 100vh;
   background: linear-gradient(135deg, #1e1b4b 0%, #1e3a8a 50%, #312e81 100%);
@@ -19,7 +25,26 @@
   overflow: hidden;
 }
 
-/* Background Animation Elements */
+.signup-content {
+  position: relative;
+  width: 100%;
+  max-width: 32rem;
+  z-index: 10;
+  animation: fadeInUp 0.8s ease-out;
+}
+
+.signup-form-container {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(16px);
+  border-radius: 1.5rem;
+  padding: 2rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
+}
+
+/* ===================================================================
+   BACKGROUND ANIMATIONS
+   =================================================================== */
 .bg-animation {
   position: absolute;
   inset: 0;
@@ -61,26 +86,9 @@
   animation-delay: 2s;
 }
 
-@keyframes float {
-  0%, 100% {
-    transform: translateY(0px) rotate(0deg);
-    opacity: 0.1;
-  }
-  50% {
-    transform: translateY(-20px) rotate(180deg);
-    opacity: 0.2;
-  }
-}
-
-/* Main Content */
-.signup-content {
-  position: relative;
-  width: 100%;
-  max-width: 32rem;
-  z-index: 10;
-}
-
-/* Back Button */
+/* ===================================================================
+   NAVIGATION
+   =================================================================== */
 .back-button {
   display: inline-flex;
   align-items: center;
@@ -102,17 +110,9 @@
   transform: translateX(-2px);
 }
 
-/* Signup Form Container */
-.signup-form-container {
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(16px);
-  border-radius: 1.5rem;
-  padding: 2rem;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
-}
-
-/* Header */
+/* ===================================================================
+   HEADER SECTION
+   =================================================================== */
 .signup-header {
   text-align: center;
   margin-bottom: 2rem;
@@ -144,7 +144,9 @@
   font-size: 1rem;
 }
 
-/* Form Styles */
+/* ===================================================================
+   FORM STRUCTURE
+   =================================================================== */
 .signup-form {
   display: flex;
   flex-direction: column;
@@ -169,18 +171,12 @@
   margin-bottom: 0.5rem;
 }
 
-.input-icon {
-  position: absolute;
-  top: 50%;
-  left: 1rem;
-  transform: translateY(-50%);
-  color: rgba(255, 255, 255, 0.5);
-  pointer-events: none;
-}
-
+/* ===================================================================
+   FORM INPUTS
+   =================================================================== */
 .form-input {
   width: 100%;
-  padding: 1rem 1rem 1rem 3rem;
+  padding: 1.125rem 1rem 1.125rem 3.5rem;
   background: rgba(255, 255, 255, 0.1);
   border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 0.75rem;
@@ -188,6 +184,8 @@
   font-size: 1rem;
   transition: all 0.3s ease;
   outline: none;
+  line-height: 1.4;
+  height: 3.5rem;
 }
 
 .form-input::placeholder {
@@ -208,31 +206,12 @@
   border-color: #ef4444;
 }
 
-.password-input {
-  padding-right: 3rem;
-}
-
-.password-toggle {
-  position: absolute;
-  top: 50%;
-  right: 1rem;
-  transform: translateY(-50%);
-  background: none;
-  border: none;
-  color: rgba(255, 255, 255, 0.5);
-  cursor: pointer;
-  transition: color 0.2s ease;
-  padding: 0.25rem;
-}
-
-.password-toggle:hover {
-  color: rgba(255, 255, 255, 0.8);
-}
-
-/* Select Input */
+/* ===================================================================
+   SELECT INPUT
+   =================================================================== */
 .form-select {
   width: 100%;
-  padding: 1rem 1rem 1rem 3rem;
+  padding: 1rem 1rem 1rem 3.5rem;
   background: rgba(255, 255, 255, 0.1);
   border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 0.75rem;
@@ -241,6 +220,7 @@
   transition: all 0.3s ease;
   outline: none;
   cursor: pointer;
+  line-height: 1.5;
 }
 
 .form-select:focus {
@@ -254,24 +234,53 @@
   color: white;
 }
 
-/* Phone Input */
-.phone-group {
+/* ===================================================================
+   INPUT ICONS
+   =================================================================== */
+.input-icon {
+  position: absolute;
+  top: 0;
+  left: 1rem;
+  height: 100%;
+  color: rgba(255, 255, 255, 0.5);
+  pointer-events: none;
   display: flex;
-  gap: 0.5rem;
+  align-items: center;
+  justify-content: center;
+  width: 1.25rem;
 }
 
-.country-code {
-  flex: 0 0 5rem;
-  padding: 1rem 0.5rem;
-  text-align: center;
+/* ===================================================================
+   PASSWORD FIELDS
+   =================================================================== */
+.password-input {
+  padding-right: 3.5rem;
 }
 
-.phone-input {
-  flex: 1;
-  padding-left: 1rem;
+.password-toggle {
+  position: absolute;
+  top: 0;
+  right: 1rem;
+  height: 100%;
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  transition: color 0.2s ease;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.25rem;
 }
 
-/* Password Strength Indicator */
+.password-toggle:hover {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* ===================================================================
+   PASSWORD STRENGTH INDICATOR
+   =================================================================== */
 .password-strength {
   margin-top: 0.5rem;
 }
@@ -310,7 +319,28 @@
   background: #10b981;
 }
 
-/* Terms and Conditions */
+/* ===================================================================
+   PHONE INPUT
+   =================================================================== */
+.phone-group {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.country-code {
+  flex: 0 0 5rem;
+  padding: 1rem 0.5rem;
+  text-align: center;
+}
+
+.phone-input {
+  flex: 1;
+  padding-left: 1rem;
+}
+
+/* ===================================================================
+   TERMS AND CONDITIONS
+   =================================================================== */
 .terms-group {
   display: flex;
   align-items: flex-start;
@@ -336,6 +366,7 @@
   color: #60a5fa;
   text-decoration: none;
   font-weight: 500;
+  transition: color 0.2s ease;
 }
 
 .terms-link:hover {
@@ -343,7 +374,9 @@
   text-decoration: underline;
 }
 
-/* Submit Button */
+/* ===================================================================
+   SUBMIT BUTTON
+   =================================================================== */
 .submit-button {
   width: 100%;
   padding: 1rem 1.5rem;
@@ -388,7 +421,9 @@
   transform: none;
 }
 
-/* Social Signup */
+/* ===================================================================
+   SOCIAL SIGNUP
+   =================================================================== */
 .social-section {
   margin-top: 1.5rem;
 }
@@ -439,7 +474,9 @@
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
-/* Login Link */
+/* ===================================================================
+   LOGIN LINK SECTION
+   =================================================================== */
 .login-section {
   text-align: center;
   margin-top: 1.5rem;
@@ -460,7 +497,9 @@
   color: #93c5fd;
 }
 
-/* Error Messages */
+/* ===================================================================
+   MESSAGE STATES
+   =================================================================== */
 .error-message {
   color: #fca5a5;
   font-size: 0.75rem;
@@ -470,7 +509,6 @@
   gap: 0.25rem;
 }
 
-/* Success Messages */
 .success-message {
   color: #86efac;
   font-size: 0.75rem;
@@ -480,7 +518,9 @@
   gap: 0.25rem;
 }
 
-/* Loading State */
+/* ===================================================================
+   LOADING STATES
+   =================================================================== */
 .loading {
   display: inline-block;
   width: 1rem;
@@ -491,13 +531,57 @@
   animation: spin 1s ease-in-out infinite;
 }
 
+/* ===================================================================
+   ANIMATIONS
+   =================================================================== */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+    opacity: 0.1;
+  }
+  50% {
+    transform: translateY(-20px) rotate(180deg);
+    opacity: 0.2;
+  }
+}
+
 @keyframes spin {
   to {
     transform: rotate(360deg);
   }
 }
 
-/* Responsive Design */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===================================================================
+   ACCESSIBILITY
+   =================================================================== */
+.back-button:focus,
+.form-input:focus,
+.form-select:focus,
+.password-toggle:focus,
+.submit-button:focus,
+.social-button:focus,
+.login-link:focus,
+.terms-link:focus {
+  outline: 2px solid rgba(59, 130, 246, 0.6);
+  outline-offset: 2px;
+}
+
+/* ===================================================================
+   RESPONSIVE DESIGN
+   =================================================================== */
+
+/* Tablet Styles */
 @media (max-width: 768px) {
   .signup-container {
     padding: 1rem;
@@ -529,45 +613,31 @@
   }
 }
 
+/* Mobile Styles */
 @media (max-width: 480px) {
   .signup-container {
     padding: 0.5rem;
   }
   
-  .form-input, .form-select {
-    padding: 0.875rem 0.875rem 0.875rem 2.5rem;
+  .form-input,
+  .form-select {
+    padding: 1rem 0.875rem 1rem 3rem;
+    height: 3.25rem;
   }
   
   .submit-button {
     padding: 0.875rem 1rem;
   }
-}
-
-/* Animations */
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
+  
+  .input-icon {
+    left: 0.75rem;
   }
-  to {
-    opacity: 1;
-    transform: translateY(0);
+  
+  .password-toggle {
+    right: 0.75rem;
   }
 }
 
-.signup-content {
-  animation: fadeInUp 0.8s ease-out;
-}
-
-/* Focus States for Accessibility */
-.back-button:focus,
-.form-input:focus,
-.form-select:focus,
-.password-toggle:focus,
-.submit-button:focus,
-.social-button:focus,
-.login-link:focus,
-.terms-link:focus {
-  outline: 2px solid rgba(59, 130, 246, 0.6);
-  outline-offset: 2px;
-}
+/* ===================================================================
+   END OF STYLES
+   =================================================================== */
