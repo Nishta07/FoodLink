@@ -235,19 +235,20 @@
 }
 
 /* ===================================================================
-   INPUT ICONS
+   INPUT ICONS (UPDATED)
    =================================================================== */
 .input-icon {
   position: absolute;
-  top: 0;
+  top: 50%;
   left: 1rem;
-  height: 100%;
+  transform: translateY(-50%);
   color: rgba(255, 255, 255, 0.5);
   pointer-events: none;
   display: flex;
   align-items: center;
   justify-content: center;
   width: 1.25rem;
+  height: auto;
 }
 
 /* ===================================================================
@@ -483,7 +484,7 @@
 }
 
 .login-text {
-  color: rgba(255, 255, 255, 0.7);
+  color: rgba(255, 255, 255, 0.7);  
 }
 
 .login-link {
@@ -631,6 +632,8 @@
   
   .input-icon {
     left: 0.75rem;
+    top: 50%;
+    transform: translateY(-50%);
   }
   
   .password-toggle {
@@ -641,3 +644,4 @@
 /* ===================================================================
    END OF STYLES
    =================================================================== */
+  

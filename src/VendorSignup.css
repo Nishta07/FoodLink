@@ -1,0 +1,777 @@
+/* ===================================================================
+   VendorSignup.css - Modern Vendor Signup Page Styles
+   =================================================================== */
+
+/* ===================================================================
+   RESET & BASE STYLES
+   =================================================================== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ===================================================================
+   LAYOUT & CONTAINER
+   =================================================================== */
+.vendor-signup-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #134e4a 0%, #0f766e 30%, #065f46 70%, #064e3b 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.vendor-signup-content {
+  position: relative;
+  width: 100%;
+  max-width: 36rem;
+  z-index: 10;
+  animation: fadeInUp 0.8s ease-out;
+}
+
+.vendor-signup-form-container {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(16px);
+  border-radius: 1.5rem;
+  padding: 2.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
+}
+
+/* ===================================================================
+   BACKGROUND ANIMATIONS
+   =================================================================== */
+.vendor-bg-animation {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.vendor-bg-circle-1 {
+  position: absolute;
+  top: -10rem;
+  right: -10rem;
+  width: 20rem;
+  height: 20rem;
+  background: rgba(16, 185, 129, 0.12);
+  border-radius: 50%;
+  animation: floatSlow 8s ease-in-out infinite;
+}
+
+.vendor-bg-circle-2 {
+  position: absolute;
+  bottom: -8rem;
+  left: -8rem;
+  width: 16rem;
+  height: 16rem;
+  background: rgba(13, 148, 136, 0.15);
+  border-radius: 50%;
+  animation: floatSlow 10s ease-in-out infinite reverse;
+}
+
+.vendor-bg-circle-3 {
+  position: absolute;
+  top: 30%;
+  left: -6rem;
+  width: 12rem;
+  height: 12rem;
+  background: rgba(5, 150, 105, 0.1);
+  border-radius: 50%;
+  animation: floatSlow 12s ease-in-out infinite;
+  animation-delay: 3s;
+}
+
+.vendor-bg-circle-4 {
+  position: absolute;
+  bottom: 20%;
+  right: -4rem;
+  width: 10rem;
+  height: 10rem;
+  background: rgba(6, 120, 95, 0.08);
+  border-radius: 50%;
+  animation: floatSlow 14s ease-in-out infinite;
+  animation-delay: 5s;
+}
+
+/* ===================================================================
+   NAVIGATION
+   =================================================================== */
+.vendor-back-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+  padding: 0.6rem 1.2rem;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 0.6rem;
+  color: rgba(255, 255, 255, 0.85);
+  text-decoration: none;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(8px);
+  font-weight: 500;
+}
+
+.vendor-back-button:hover {
+  background: rgba(16, 185, 129, 0.2);
+  color: white;
+  transform: translateX(-3px);
+  border-color: rgba(16, 185, 129, 0.4);
+}
+
+/* ===================================================================
+   HEADER SECTION
+   =================================================================== */
+.vendor-signup-header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.vendor-signup-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 4.5rem;
+  height: 4.5rem;
+  border-radius: 50%;
+  margin-bottom: 1.2rem;
+  background: linear-gradient(135deg, #10b981 0%, #0d9488 100%);
+  color: white;
+  box-shadow: 0 10px 30px rgba(16, 185, 129, 0.4);
+}
+
+.vendor-signup-title {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 0.6rem;
+  line-height: 1.2;
+}
+
+.vendor-signup-subtitle {
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 1.1rem;
+  line-height: 1.4;
+}
+
+/* ===================================================================
+   FORM STRUCTURE
+   =================================================================== */
+.vendor-signup-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.8rem;
+}
+
+.vendor-form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.2rem;
+}
+
+.vendor-form-row-triple {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1rem;
+}
+
+.vendor-input-group {
+  position: relative;
+}
+
+.vendor-input-label {
+  display: block;
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 0.6rem;
+  letter-spacing: 0.025em;
+}
+
+.vendor-required {
+  color: #fbbf24;
+}
+
+/* ===================================================================
+   FORM INPUTS
+   =================================================================== */
+.vendor-form-input {
+  width: 100%;
+  padding: 1.2rem 1rem 1.2rem 3.6rem;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1.5px solid rgba(255, 255, 255, 0.2);
+  border-radius: 0.8rem;
+  color: white;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  outline: none;
+  line-height: 1.4;
+  height: 3.6rem;
+}
+
+.vendor-form-input::placeholder {
+  color: rgba(255, 255, 255, 0.45);
+}
+
+.vendor-form-input:focus {
+  border-color: #10b981;
+  background: rgba(255, 255, 255, 0.12);
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.2);
+}
+
+.vendor-form-input:valid {
+  border-color: #10b981;
+}
+
+.vendor-form-input:invalid:not(:placeholder-shown) {
+  border-color: #ef4444;
+}
+
+/* ===================================================================
+   SELECT INPUT
+   =================================================================== */
+.vendor-form-select {
+  width: 100%;
+  padding: 1.2rem 1rem 1.2rem 3.6rem;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1.5px solid rgba(255, 255, 255, 0.2);
+  border-radius: 0.8rem;
+  color: white;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  outline: none;
+  cursor: pointer;
+  line-height: 1.4;
+  height: 3.6rem;
+}
+
+.vendor-form-select:focus {
+  border-color: #10b981;
+  background: rgba(255, 255, 255, 0.12);
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.2);
+}
+
+.vendor-form-select option {
+  background: #064e3b;
+  color: white;
+  padding: 0.5rem;
+}
+
+/* ===================================================================
+   TEXTAREA INPUT
+   =================================================================== */
+.vendor-form-textarea {
+  width: 100%;
+  padding: 1.2rem 1rem 1.2rem 3.6rem;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1.5px solid rgba(255, 255, 255, 0.2);
+  border-radius: 0.8rem;
+  color: white;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  outline: none;
+  line-height: 1.5;
+  min-height: 5rem;
+  resize: vertical;
+  font-family: inherit;
+}
+
+.vendor-form-textarea::placeholder {
+  color: rgba(255, 255, 255, 0.45);
+}
+
+.vendor-form-textarea:focus {
+  border-color: #10b981;
+  background: rgba(255, 255, 255, 0.12);
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.2);
+}
+
+/* ===================================================================
+   INPUT ICONS
+   =================================================================== */
+.vendor-input-icon {
+  position: absolute;
+  top: 0;
+  left: 1.1rem;
+  height: 100%;
+  color: rgba(255, 255, 255, 0.5);
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.4rem;
+}
+
+.vendor-textarea-icon {
+  position: absolute;
+  top: 1.2rem;
+  left: 1.1rem;
+  color: rgba(255, 255, 255, 0.5);
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.4rem;
+}
+
+/* ===================================================================
+   PASSWORD FIELDS
+   =================================================================== */
+.vendor-password-input {
+  padding-right: 3.6rem;
+}
+
+.vendor-password-toggle {
+  position: absolute;
+  top: 0;
+  right: 1.1rem;
+  height: 100%;
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  transition: color 0.2s ease;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.4rem;
+}
+
+.vendor-password-toggle:hover {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* ===================================================================
+   PASSWORD STRENGTH INDICATOR
+   =================================================================== */
+.vendor-password-strength {
+  margin-top: 0.6rem;
+}
+
+.vendor-strength-label {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 0.3rem;
+  font-weight: 500;
+}
+
+.vendor-strength-bar {
+  height: 4px;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.vendor-strength-fill {
+  height: 100%;
+  transition: all 0.4s ease;
+  border-radius: 2px;
+}
+
+.vendor-strength-weak {
+  width: 33%;
+  background: #ef4444;
+}
+
+.vendor-strength-medium {
+  width: 66%;
+  background: #f59e0b;
+}
+
+.vendor-strength-strong {
+  width: 100%;
+  background: #10b981;
+}
+
+/* ===================================================================
+   FILE UPLOAD
+   =================================================================== */
+.vendor-file-upload {
+  position: relative;
+  border: 2px dashed rgba(255, 255, 255, 0.3);
+  border-radius: 0.8rem;
+  padding: 2rem;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.05);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.vendor-file-upload:hover {
+  border-color: #10b981;
+  background: rgba(16, 185, 129, 0.08);
+}
+
+.vendor-file-input {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.vendor-file-content {
+  pointer-events: none;
+}
+
+.vendor-file-icon {
+  width: 3rem;
+  height: 3rem;
+  margin: 0 auto 1rem;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.vendor-file-text {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.95rem;
+  margin-bottom: 0.5rem;
+}
+
+.vendor-file-subtext {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.85rem;
+}
+
+.vendor-file-selected {
+  border-color: #10b981;
+  background: rgba(16, 185, 129, 0.1);
+}
+
+/* ===================================================================
+   TERMS AND CONDITIONS
+   =================================================================== */
+.vendor-terms-group {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1.5rem;
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.vendor-terms-checkbox {
+  margin-top: 0.3rem;
+  accent-color: #10b981;
+  transform: scale(1.2);
+}
+
+.vendor-terms-text {
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+.vendor-terms-link {
+  color: #34d399;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.2s ease;
+}
+
+.vendor-terms-link:hover {
+  color: #6ee7b7;
+  text-decoration: underline;
+}
+
+/* ===================================================================
+   SUBMIT BUTTON
+   =================================================================== */
+.vendor-submit-button {
+  width: 100%;
+  padding: 1.2rem 2rem;
+  border-radius: 0.8rem;
+  font-weight: 700;
+  color: white;
+  border: none;
+  cursor: pointer;
+  background: linear-gradient(135deg, #10b981 0%, #0d9488 100%);
+  box-shadow: 0 6px 20px rgba(16, 185, 129, 0.4);
+  transform: translateY(0);
+  transition: all 0.3s ease;
+  font-size: 1.1rem;
+  position: relative;
+  overflow: hidden;
+  letter-spacing: 0.025em;
+}
+
+.vendor-submit-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.6s ease;
+}
+
+.vendor-submit-button:hover::before {
+  left: 100%;
+}
+
+.vendor-submit-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 35px rgba(16, 185, 129, 0.5);
+  background: linear-gradient(135deg, #059669 0%, #0f766e 100%);
+}
+
+.vendor-submit-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* ===================================================================
+   SOCIAL SIGNUP
+   =================================================================== */
+.vendor-social-section {
+  margin-top: 2rem;
+}
+
+.vendor-divider {
+  margin: 2rem 0;
+  display: flex;
+  align-items: center;
+}
+
+.vendor-divider-line {
+  flex: 1;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.vendor-divider-text {
+  padding: 0 1.5rem;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.vendor-social-buttons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.2rem;
+}
+
+.vendor-social-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 1rem 1.2rem;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 0.8rem;
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(8px);
+}
+
+.vendor-social-button:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* ===================================================================
+   LOGIN LINK SECTION
+   =================================================================== */
+.vendor-login-section {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.vendor-login-text {
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 1rem;
+}
+
+.vendor-login-link {
+  color: #34d399;
+  text-decoration: none;
+  font-weight: 700;
+  transition: color 0.2s ease;
+}
+
+.vendor-login-link:hover {
+  color: #6ee7b7;
+}
+
+/* ===================================================================
+   MESSAGE STATES
+   =================================================================== */
+.vendor-error-message {
+  color: #fca5a5;
+  font-size: 0.8rem;
+  margin-top: 0.4rem;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-weight: 500;
+}
+
+.vendor-success-message {
+  color: #86efac;
+  font-size: 0.8rem;
+  margin-top: 0.4rem;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-weight: 500;
+}
+
+/* ===================================================================
+   LOADING STATES
+   =================================================================== */
+.vendor-loading {
+  display: inline-block;
+  width: 1.1rem;
+  height: 1.1rem;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: white;
+  animation: spin 1s ease-in-out infinite;
+  margin-right: 0.5rem;
+}
+
+/* ===================================================================
+   ANIMATIONS
+   =================================================================== */
+@keyframes floatSlow {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+    opacity: 0.08;
+  }
+  50% {
+    transform: translateY(-25px) rotate(180deg);
+    opacity: 0.15;
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===================================================================
+   ACCESSIBILITY
+   =================================================================== */
+.vendor-back-button:focus,
+.vendor-form-input:focus,
+.vendor-form-select:focus,
+.vendor-form-textarea:focus,
+.vendor-password-toggle:focus,
+.vendor-submit-button:focus,
+.vendor-social-button:focus,
+.vendor-login-link:focus,
+.vendor-terms-link:focus,
+.vendor-file-upload:focus-within {
+  outline: 2px solid rgba(16, 185, 129, 0.8);
+  outline-offset: 2px;
+}
+
+/* ===================================================================
+   RESPONSIVE DESIGN
+   =================================================================== */
+
+/* Tablet Styles */
+@media (max-width: 768px) {
+  .vendor-signup-container {
+    padding: 1.5rem 1rem;
+  }
+  
+  .vendor-signup-form-container {
+    padding: 2rem;
+  }
+  
+  .vendor-form-row,
+  .vendor-form-row-triple {
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+  }
+  
+  .vendor-signup-title {
+    font-size: 2rem;
+  }
+  
+  .vendor-social-buttons {
+    grid-template-columns: 1fr;
+  }
+  
+  .vendor-file-upload {
+    padding: 1.5rem;
+  }
+}
+
+/* Mobile Styles */
+@media (max-width: 480px) {
+  .vendor-signup-container {
+    padding: 1rem 0.5rem;
+  }
+  
+  .vendor-signup-form-container {
+    padding: 1.5rem;
+  }
+  
+  .vendor-form-input,
+  .vendor-form-select {
+    padding: 1rem 0.8rem 1rem 3.2rem;
+    height: 3.2rem;
+  }
+  
+  .vendor-form-textarea {
+    padding: 1rem 0.8rem 1rem 3.2rem;
+  }
+  
+  .vendor-submit-button {
+    padding: 1rem 1.5rem;
+    font-size: 1rem;
+  }
+  
+  .vendor-input-icon {
+    left: 0.9rem;
+    width: 1.2rem;
+  }
+  
+  .vendor-textarea-icon {
+    left: 0.9rem;
+    width: 1.2rem;
+  }
+  
+  .vendor-password-toggle {
+    right: 0.9rem;
+    width: 1.2rem;
+  }
+  
+  .vendor-signup-title {
+    font-size: 1.8rem;
+  }
+  
+  .vendor-terms-group {
+    padding: 1.2rem;
+  }
+}
+
+/* ===================================================================
+   END OF STYLES
+   =================================================================== */
