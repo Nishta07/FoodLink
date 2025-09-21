@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { User, ShoppingBag, Eye, EyeOff, Mail, Lock } from 'lucide-react';
+import { User, ShoppingBag, Eye, EyeOff, Mail, Lock, ArrowLeft, Home } from 'lucide-react';
 import styles from './LoginPage.module.css';
 
 const LoginPage = () => {
@@ -25,9 +25,7 @@ const LoginPage = () => {
   };
 
   return (
-    
     <div className={styles.loginContainer}>
-      
       {/* Background Animation */}
       <div className={styles.bgAnimation}>
         <div className={styles.bgCircle1}></div>
@@ -36,6 +34,12 @@ const LoginPage = () => {
 
       {/* Main Content */}
       <div className={styles.loginContent}>
+        {/* Back to Home Button */}
+        <Link to="/" className={styles.backToHomeButton}>
+          <Home size={20} />
+          <span>Back to Home</span>
+        </Link>
+
         {/* Login Type Selector */}
         <div className={styles.loginTypeSelector}>
           <div className={styles.selectorGrid}>
@@ -150,7 +154,6 @@ const LoginPage = () => {
               </Link>
             </p>
           </div>
-
         </div>
 
         {/* Footer */}

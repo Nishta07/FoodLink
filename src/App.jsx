@@ -1,7 +1,33 @@
 import './App.css';
+import React, { useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
 
 function App() {
+  const [isDarkMode, setIsDarkMode] = useState(false);
+
+  // Load dark mode preference on component mount
+  useEffect(() => {
+    const savedTheme = localStorage.getItem('foodlink-theme');
+    if (savedTheme === 'dark') {
+      setIsDarkMode(true);
+      document.documentElement.setAttribute('data-theme', 'dark');
+    }
+  }, []);
+
+  // Toggle dark mode and save preference
+  const toggleDarkMode = () => {
+    const newDarkMode = !isDarkMode;
+    setIsDarkMode(newDarkMode);
+    
+    if (newDarkMode) {
+      document.documentElement.setAttribute('data-theme', 'dark');
+      localStorage.setItem('foodlink-theme', 'dark');
+    } else {
+      document.documentElement.removeAttribute('data-theme');
+      localStorage.setItem('foodlink-theme', 'light');
+    }
+  };
+
   return (
     <div>
       {/* HEADER */}
@@ -15,6 +41,13 @@ function App() {
           <a href="#contact" className="nav-link">Contact</a>
         </div>
         <div className="header-right">
+          <button 
+            onClick={toggleDarkMode} 
+            className="theme-toggle-btn"
+            aria-label="Toggle dark mode"
+          >
+            {isDarkMode ? '☀️' : '🌙'}
+          </button>
           <Link to="/login" className="get-started-btn">Get Started</Link>
         </div>
       </header>
