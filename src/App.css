@@ -3,7 +3,7 @@
 
 :root {
   /* Light Mode Colors */
-  --primary-green: #10b981;
+  --primary-green: #10b981;       
   --secondary-green: #059669;
   --tertiary-green: #047857;
   --accent-bg: linear-gradient(135deg, #ecfdf5 0%, #f0fdf4 100%);

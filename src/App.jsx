@@ -41,13 +41,13 @@ function App() {
           <a href="#contact" className="nav-link">Contact</a>
         </div>
         <div className="header-right">
-          <button 
+          {/* <button 
             onClick={toggleDarkMode} 
             className="theme-toggle-btn"
             aria-label="Toggle dark mode"
-          >
-            {isDarkMode ? '☀️' : '🌙'}
-          </button>
+          > */}
+            {/* {isDarkMode ? '☀️' : '🌙'} */}
+          {/* </button> */}
           <Link to="/login" className="get-started-btn">Get Started</Link>
         </div>
       </header>
