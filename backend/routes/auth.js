@@ -10,7 +10,7 @@ router.post('/signup', async (req, res) => {
   try {
     const existing = await User.findOne({ username });
     if (existing) return res.status(400).json({ error: 'Username already exists' });
-nishy@fedora:~/Downloads/FoodLink-main/backend$ cd --
+
     const hashedPassword = await bcrypt.hash(password, 10);
     const user = new User({ username, password: hashedPassword });
     await user.save();
