@@ -1,0 +1,23 @@
+* [33m6e4184e[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;32mbackup-main[m[33m)[m fixed code
+[31m|[m *   [33m95d99b1[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m Merge pull request #2 from Nishta07/main
+[31m|[m [32m|[m[33m\[m  
+[31m|[m [32m|[m * [33ma548b1c[m Merge branch 'abhishekk2511:main' into main
+[31m|[m [32m|[m[31m/[m[32m|[m 
+[31m|[m[31m/[m[32m|[m[32m/[m  
+[31m|[m *   [33m7287547[m Merge pull request #1 from Nishta07/main
+[31m|[m [36m|[m[1;31m\[m  
+* [36m|[m [1;31m|[m [33ma1dd436[m done shit
+[1;31m|[m [36m|[m[1;31m/[m  
+[1;31m|[m[1;31m/[m[36m|[m   
+* [36m|[m [33m5d87ba3[m with backend changes in the file to accept api response
+* [36m|[m [33m1b580b1[m Add backend folder and authentication routes
+* [36m|[m [33m1becd3b[m Add backend folder and authentication routes
+[36m|[m[36m/[m  
+* [33m0a3c29a[m Initial commit
+* [33me9e6d19[m Initial commit
+* [33m5cf55b9[m Initial commit
+* [33mf99be7c[m Initial commit
+* [33m19fd41f[m Initial commit
+* [33m9a77bbf[m minor
+* [33m5e7cb40[m Initial commit - FoodLink React + Tailwind
+* [33mc031fb1[m Initialize project using Create React App
