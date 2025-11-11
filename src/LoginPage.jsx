@@ -28,18 +28,45 @@ const LoginPage = () => {
       [e.target.name]: e.target.value,
     });
   };
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  try {
+    // POST to backend API
+    const response = await fetch("http://localhost:5000/api/auth/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        username: formData.email, // assuming backend uses "username" for email
+        password: formData.password,
+      }),
+    });
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(`${loginType} login attempt:`, formData);
+    const data = await response.json();
 
-    // ✅ Navigate based on login type
-    if (loginType === "customer") {
-      navigate("/customer-dashboard");
-    } else {
-      navigate("/vendor-dashboard");
+    if (response.ok) {
+      // Store token to localStorage/sessionStorage
+      window.localStorage.setItem("token", data.token);
+
+      // Optionally store username or other info if needed
+      window.localStorage.setItem("username", data.username);
+
+      // Route based on loginType
+      if (loginType === "customer") {
+        navigate("/customer-dashboard");
+      } else {
+        navigate("/vendor-dashboard");
+      }
+        } else {
+      alert(data.error || data.message || "Login failed. Please check your credentials.");
     }
-  };
+  } catch (error) {
+  console.error("Login error:", error);
+  alert("An error occurred. Please try again.");
+}
+};
+
 
   return (
     <div className={styles.loginContainer}>

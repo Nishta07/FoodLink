@@ -1,5 +1,7 @@
+// src/CustomerDashboard.jsx
 import React, { useState } from 'react';
 import './CustomerDashboard.css';
+import HeatmapComponent from './components/HeatmapComponent'; // <-- new import
 
 function CustomerDashboard() {
   const [activeTab, setActiveTab] = useState('dashboard');
@@ -190,121 +192,136 @@ function CustomerDashboard() {
     return classes[status] || 'status-default';
   };
 
-  // Render Dashboard Tab
+  // --- REPLACED renderDashboard (two-column with heatmap) ---
   const renderDashboard = () => (
-    <div className="dashboard-content">
-      {/* Welcome Banner */}
-      <div className="welcome-banner">
-        <div className="welcome-text">
-          <h2>Welcome back, {user.name}!</h2>
-          <p>Together we're fighting hunger and reducing food waste, one meal at a time.</p>
+    <div className="dashboard-content dashboard-grid">
+      {/* Left column: existing dashboard content */}
+      <div className="dashboard-left">
+        {/* Welcome Banner */}
+        <div className="welcome-banner">
+          <div className="welcome-text">
+            <h2>Welcome back, {user.name}!</h2>
+            <p>Together we're fighting hunger and reducing food waste, one meal at a time.</p>
+          </div>
+          <button className="btn-primary" onClick={() => setShowDonationForm(true)}>
+            + Donate Food Now
+          </button>
         </div>
-        <button className="btn-primary" onClick={() => setShowDonationForm(true)}>
-          + Donate Food Now
-        </button>
-      </div>
 
-      {/* Impact Stats */}
-      <div className="stats-grid">
-        <div className="stat-card primary">
-          <div className="stat-icon">🍽️</div>
-          <div className="stat-details">
-            <h3>{userStats.totalDonations}</h3>
-            <p>Total Donations</p>
+        {/* Impact Stats */}
+        <div className="stats-grid">
+          <div className="stat-card primary">
+            <div className="stat-icon">🍽️</div>
+            <div className="stat-details">
+              <h3>{userStats.totalDonations}</h3>
+              <p>Total Donations</p>
+            </div>
+          </div>
+          <div className="stat-card success">
+            <div className="stat-icon">⚖️</div>
+            <div className="stat-details">
+              <h3>{userStats.foodDonated}</h3>
+              <p>Food Donated</p>
+            </div>
+          </div>
+          <div className="stat-card info">
+            <div className="stat-icon">❤️</div>
+            <div className="stat-details">
+              <h3>{userStats.peopleFed}</h3>
+              <p>People Fed</p>
+            </div>
+          </div>
+          <div className="stat-card warning">
+            <div className="stat-icon">🌱</div>
+            <div className="stat-details">
+              <h3>{userStats.co2Saved}</h3>
+              <p>CO₂ Saved</p>
+            </div>
           </div>
         </div>
-        <div className="stat-card success">
-          <div className="stat-icon">⚖️</div>
-          <div className="stat-details">
-            <h3>{userStats.foodDonated}</h3>
-            <p>Food Donated</p>
-          </div>
-        </div>
-        <div className="stat-card info">
-          <div className="stat-icon">❤️</div>
-          <div className="stat-details">
-            <h3>{userStats.peopleFed}</h3>
-            <p>People Fed</p>
-          </div>
-        </div>
-        <div className="stat-card warning">
-          <div className="stat-icon">🌱</div>
-          <div className="stat-details">
-            <h3>{userStats.co2Saved}</h3>
-            <p>CO₂ Saved</p>
-          </div>
-        </div>
-      </div>
 
-      {/* Mission Statement */}
-      <div className="mission-section">
-        <h3>Our Mission: Zero Hunger, Zero Waste</h3>
-        <div className="mission-content">
-          <div className="mission-card">
-            <div className="mission-icon">🌍</div>
-            <h4>The Global Challenge</h4>
-            <p>Food wastage is one of the most pressing global issues, with millions of tons of edible food being discarded every day, while millions of people continue to suffer from hunger and malnutrition.</p>
-          </div>
-          <div className="mission-card">
-            <div className="mission-icon">🤝</div>
-            <h4>Bridging The Gap</h4>
-            <p>FoodLink connects food donors with NGOs and volunteers through real-time listings, image uploads, and location-based matching to ensure timely redistribution of excess food.</p>
-          </div>
-          <div className="mission-card">
-            <div className="mission-icon">🎯</div>
-            <h4>UN SDG Alignment</h4>
-            <p>Our initiative promotes sustainability and social welfare, directly supporting SDG 2: Zero Hunger and SDG 12: Responsible Consumption and Production.</p>
+        {/* Mission Statement */}
+        <div className="mission-section">
+          <h3>Our Mission: Zero Hunger, Zero Waste</h3>
+          <div className="mission-content">
+            <div className="mission-card">
+              <div className="mission-icon">🌍</div>
+              <h4>The Global Challenge</h4>
+              <p>Food wastage is one of the most pressing global issues, with millions of tons of edible food being discarded every day, while millions of people continue to suffer from hunger and malnutrition.</p>
+            </div>
+            <div className="mission-card">
+              <div className="mission-icon">🤝</div>
+              <h4>Bridging The Gap</h4>
+              <p>FoodLink connects food donors with NGOs and volunteers through real-time listings, image uploads, and location-based matching to ensure timely redistribution of excess food.</p>
+            </div>
+            <div className="mission-card">
+              <div className="mission-icon">🎯</div>
+              <h4>UN SDG Alignment</h4>
+              <p>Our initiative promotes sustainability and social welfare, directly supporting SDG 2: Zero Hunger and SDG 12: Responsible Consumption and Production.</p>
+            </div>
           </div>
         </div>
-      </div>
 
-      {/* Active Donations */}
-      {activeDonations.length > 0 && (
-        <div className="active-donations-section">
-          <h3>Your Active Donations</h3>
-          <div className="active-donations-list">
-            {activeDonations.map(donation => (
-              <div key={donation.id} className="active-donation-card">
-                <div className="donation-info">
-                  <h4>{donation.foodType}</h4>
-                  <p className="quantity">📦 {donation.quantity}</p>
-                  <p className="ngo">🏢 {donation.ngo}</p>
-                  <p className="volunteer">👤 Volunteer: {donation.volunteer}</p>
+        {/* Active Donations */}
+        {activeDonations.length > 0 && (
+          <div className="active-donations-section">
+            <h3>Your Active Donations</h3>
+            <div className="active-donations-list">
+              {activeDonations.map(donation => (
+                <div key={donation.id} className="active-donation-card">
+                  <div className="donation-info">
+                    <h4>{donation.foodType}</h4>
+                    <p className="quantity">📦 {donation.quantity}</p>
+                    <p className="ngo">🏢 {donation.ngo}</p>
+                    <p className="volunteer">👤 Volunteer: {donation.volunteer}</p>
+                  </div>
+                  <div className="donation-status">
+                    <span className={`status-badge ${getStatusClass(donation.status)}`}>
+                      {donation.status === 'picked-up' ? '🚚 Picked Up' : '📍 Assigned'}
+                    </span>
+                    <p className="eta">
+                      {donation.status === 'picked-up' 
+                        ? `Delivery in ${donation.estimatedDelivery}`
+                        : `Pickup in ${donation.estimatedPickup}`
+                      }
+                    </p>
+                  </div>
                 </div>
-                <div className="donation-status">
-                  <span className={`status-badge ${getStatusClass(donation.status)}`}>
-                    {donation.status === 'picked-up' ? '🚚 Picked Up' : '📍 Assigned'}
-                  </span>
-                  <p className="eta">
-                    {donation.status === 'picked-up' 
-                      ? `Delivery in ${donation.estimatedDelivery}`
-                      : `Pickup in ${donation.estimatedPickup}`
-                    }
-                  </p>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* Recent Impact */}
+        <div className="recent-impact">
+          <h3>Recent Donations</h3>
+          <div className="impact-list">
+            {donationHistory.slice(0, 3).map(donation => (
+              <div key={donation.id} className="impact-item">
+                <div className="impact-icon success">✅</div>
+                <div className="impact-details">
+                  <h4>{donation.foodType}</h4>
+                  <p>{donation.quantity} donated to {donation.ngo}</p>
+                  <span className="impact-date">{donation.date} at {donation.pickupTime}</span>
+                </div>
+                <div className="impact-result">
+                  <span className="impact-badge">{donation.impact}</span>
                 </div>
               </div>
             ))}
           </div>
         </div>
-      )}
+      </div>
 
-      {/* Recent Impact */}
-      <div className="recent-impact">
-        <h3>Recent Donations</h3>
-        <div className="impact-list">
-          {donationHistory.slice(0, 3).map(donation => (
-            <div key={donation.id} className="impact-item">
-              <div className="impact-icon success">✅</div>
-              <div className="impact-details">
-                <h4>{donation.foodType}</h4>
-                <p>{donation.quantity} donated to {donation.ngo}</p>
-                <span className="impact-date">{donation.date} at {donation.pickupTime}</span>
-              </div>
-              <div className="impact-result">
-                <span className="impact-badge">{donation.impact}</span>
-              </div>
-            </div>
-          ))}
+      {/* Right column: Heatmap */}
+      <div className="dashboard-right">
+        <div className="heatmap-card">
+          <h3 style={{margin: '0 0 8px 0'}}>Predicted Demand Heatmap</h3>
+          <p style={{margin: '0 0 12px 0', fontSize: 13, color: '#555'}}>Shows predicted food demand intensity and available listings. Toggle layers on the map controls.</p>
+          <div style={{height: 560}}>
+            {/* Delhi bbox by default, moderate grid for performance */}
+            <HeatmapComponent bbox={[28.5, 77.05, 28.8, 77.35]} rows={18} cols={18} pollInterval={30000} />
+          </div>
         </div>
       </div>
     </div>

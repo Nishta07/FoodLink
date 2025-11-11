@@ -1,3 +1,13 @@
+/* src/index.css — @import must be first */
+@import url('https://unpkg.com/leaflet/dist/leaflet.css');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Ensure the map container has a height */
+.leaflet-container {
+  height: 600px !important;
+  width: 100% !important;
+  z-index: 0;
+}
