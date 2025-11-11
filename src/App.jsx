@@ -1,11 +1,12 @@
+// src/App.jsx
 import './App.css';
 import React, { useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
+import HeatmapComponent from './components/HeatmapComponent';
 
 function App() {
   const [isDarkMode, setIsDarkMode] = useState(false);
 
-  // Load dark mode preference on component mount
   useEffect(() => {
     const savedTheme = localStorage.getItem('foodlink-theme');
     if (savedTheme === 'dark') {
@@ -14,7 +15,6 @@ function App() {
     }
   }, []);
 
-  // Toggle dark mode and save preference
   const toggleDarkMode = () => {
     const newDarkMode = !isDarkMode;
     setIsDarkMode(newDarkMode);
@@ -63,6 +63,15 @@ function App() {
           <button className="cta-btn">🌍 Join the Movement</button>
         </div>
       </section>
+
+            {/* Predicted Food Demand Heatmap */}
+      <section id="heatmap" style={{ padding: 12, background: '#f7fafc' }}>
+        <h2 style={{ textAlign: 'center', marginBottom: 8 }}>Predicted Food Demand Heatmap</h2>
+        <div style={{ maxWidth: 1200, margin: '12px auto' }}>
+          <HeatmapComponent />
+        </div>
+      </section>
+
 
 
       {/* FEATURES */}

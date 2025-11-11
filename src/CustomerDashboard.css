@@ -1639,3 +1639,47 @@ body {
   font-size: 1.1rem;
   color: var(--text-secondary);
 }
+
+/* ---------- Heatmap 2-column layout for Dashboard ---------- */
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: 1fr 420px; /* main content / heatmap column */
+  gap: 20px;
+  align-items: start;
+}
+
+/* left: existing dashboard styles apply */
+.dashboard-left {
+  /* preserve existing paddings/margins from your CSS */
+}
+
+/* right: heatmap card container */
+.dashboard-right {
+  position: relative;
+}
+
+/* box for the heatmap so it looks card-like */
+.heatmap-card {
+  background: #fff;
+  border: 1px solid #e6e6e6;
+  border-radius: 10px;
+  padding: 12px;
+  box-shadow: 0 6px 18px rgba(15, 23, 42, 0.06);
+  height: 100%;
+  overflow: hidden;
+}
+
+/* make sure the map fills the card area */
+.heatmap-card > div {
+  height: 100%;
+}
+
+/* small responsive fallback */
+@media (max-width: 1024px) {
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+  .heatmap-card {
+    margin-top: 18px;
+  }
+}
