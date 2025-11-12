@@ -30,41 +30,48 @@ const LoginPage = () => {
   };
 const handleSubmit = async (e) => {
   e.preventDefault();
+
   try {
-    // POST to backend API
-    const response = await fetch("http://localhost:5000/api/auth/login", {
+    const endpoint =
+      loginType === "customer"
+        ? "http://localhost:5000/api/customerAuth/cust/login"
+        : "http://localhost:5000/api/vendorAuth/vendor/login";
+
+    const response = await fetch(endpoint, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        username: formData.email, // assuming backend uses "username" for email
-        password: formData.password,
+        email: formData.email.trim(),
+        password: formData.password.trim(),
       }),
     });
 
     const data = await response.json();
 
-    if (response.ok) {
-      // Store token to localStorage/sessionStorage
-      window.localStorage.setItem("token", data.token);
+    console.log("Response Status:", response.status);
+    console.log("Response Data:", data);
 
-      // Optionally store username or other info if needed
-      window.localStorage.setItem("username", data.username);
+    // ✅ If login is successful
+    if (response.ok && data.token) {
+      localStorage.setItem("token", data.token);
+      localStorage.setItem("username", data.username);
+      localStorage.setItem("email", data.email);
+      localStorage.setItem("location", data.location);
 
-      // Route based on loginType
-      if (loginType === "customer") {
-        navigate("/customer-dashboard");
-      } else {
-        navigate("/vendor-dashboard");
-      }
-        } else {
-      alert(data.error || data.message || "Login failed. Please check your credentials.");
+      alert("Login successful ✅");
+      navigate("/customer-dashboard");
+    } 
+    // ❌ Invalid credentials or backend error
+    else {
+      alert(data.error || data.message || "Invalid credentials. Please try again.");
     }
+
   } catch (error) {
-  console.error("Login error:", error);
-  alert("An error occurred. Please try again.");
-}
+    console.error("Login error:", error);
+    alert("Server not responding. Please check if backend is running on port 5000.");
+  }
 };
 
 
