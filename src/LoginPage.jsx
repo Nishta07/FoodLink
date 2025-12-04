@@ -28,52 +28,52 @@ const LoginPage = () => {
       [e.target.name]: e.target.value,
     });
   };
-const handleSubmit = async (e) => {
-  e.preventDefault();
 
-  try {
-    const endpoint =
-      loginType === "customer"
-        ? "http://localhost:5000/api/customerAuth/cust/login"
-        : "http://localhost:5000/api/vendorAuth/vendor/login";
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-    const response = await fetch(endpoint, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        email: formData.email.trim(),
-        password: formData.password.trim(),
-      }),
-    });
+    try {
+      const endpoint =
+        loginType === "customer"
+          ? "/api/customerAuth/cust/login"
+          : "/api/vendorAuth/vendor/login";
 
-    const data = await response.json();
+      const response = await fetch(endpoint, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: formData.email.trim(),
+          password: formData.password.trim(),
+        }),
+      });
 
-    console.log("Response Status:", response.status);
-    console.log("Response Data:", data);
+      const data = await response.json();
 
-    // ✅ If login is successful
-    if (response.ok && data.token) {
-      localStorage.setItem("token", data.token);
-      localStorage.setItem("username", data.username);
-      localStorage.setItem("email", data.email);
-      localStorage.setItem("location", data.location);
+      console.log("Response Status:", response.status);
+      console.log("Response Data:", data);
 
-      alert("Login successful ✅");
-      navigate("/customer-dashboard");
-    } 
-    // ❌ Invalid credentials or backend error
-    else {
-      alert(data.error || data.message || "Invalid credentials. Please try again.");
+      // ✅ If login is successful
+      if (response.ok && data.token) {
+        localStorage.setItem("token", data.token);
+        localStorage.setItem("username", data.username);
+        localStorage.setItem("email", data.email);
+        localStorage.setItem("location", data.location);
+
+        alert("Login successful ✅");
+        navigate("/customer-dashboard");
+      } 
+      // ❌ Invalid credentials or backend error
+      else {
+        alert(data.error || data.message || "Invalid credentials. Please try again.");
+      }
+
+    } catch (error) {
+      console.error("Login error:", error);
+      alert("Server not responding. Please check if backend is running on port 5000.");
     }
-
-  } catch (error) {
-    console.error("Login error:", error);
-    alert("Server not responding. Please check if backend is running on port 5000.");
-  }
-};
-
+  };
 
   return (
     <div className={styles.loginContainer}>
