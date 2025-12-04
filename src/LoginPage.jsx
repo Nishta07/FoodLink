@@ -29,51 +29,55 @@ const LoginPage = () => {
     });
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+ const handleSubmit = async (e) => {
+  e.preventDefault();
 
-    try {
-      const endpoint =
-        loginType === "customer"
-          ? "/api/customerAuth/cust/login"
-          : "/api/vendorAuth/vendor/login";
+  try {
+    // ✅ Dynamic base URL
+    const baseUrl =
+      process.env.NODE_ENV === "development"
+        ? "http://localhost:5000"
+        : "https://foodlink-q3or.onrender.com"; // your Render URL
 
-      const response = await fetch(endpoint, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          email: formData.email.trim(),
-          password: formData.password.trim(),
-        }),
-      });
+    const endpoint =
+      loginType === "customer"
+        ? `${baseUrl}/api/customerAuth/cust/login`
+        : `${baseUrl}/api/vendorAuth/vendor/login`;
 
-      const data = await response.json();
+    const response = await fetch(endpoint, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email: formData.email.trim(),
+        password: formData.password.trim(),
+      }),
+    });
 
-      console.log("Response Status:", response.status);
-      console.log("Response Data:", data);
+    const data = await response.json();
 
-      // ✅ If login is successful
-      if (response.ok && data.token) {
-        localStorage.setItem("token", data.token);
-        localStorage.setItem("username", data.username);
-        localStorage.setItem("email", data.email);
-        localStorage.setItem("location", data.location);
+    console.log("Response Status:", response.status);
+    console.log("Response Data:", data);
 
-        alert("Login successful ✅");
-        navigate("/customer-dashboard");
-      } 
-      // ❌ Invalid credentials or backend error
-      else {
-        alert(data.error || data.message || "Invalid credentials. Please try again.");
-      }
+    if (response.ok && data.token) {
+      localStorage.setItem("token", data.token);
+      localStorage.setItem("username", data.username);
+      localStorage.setItem("email", data.email);
+      localStorage.setItem("location", data.location);
 
-    } catch (error) {
-      console.error("Login error:", error);
-      alert("Server not responding. Please check if backend is running on port 5000.");
+      alert("Login successful ✅");
+      navigate("/customer-dashboard");
+    } else {
+      alert(data.error || data.message || "Invalid credentials. Please try again.");
     }
-  };
+
+  } catch (error) {
+    console.error("Login error:", error);
+    alert("Server not responding. Please try again.");
+  }
+};
+
 
   return (
     <div className={styles.loginContainer}>
