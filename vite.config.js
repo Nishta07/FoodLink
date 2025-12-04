@@ -10,8 +10,8 @@ export default defineConfig({
     },
   },
   server: {
-    proxy: {
-      '/api': 'http://localhost:5000',
-    },
-  },
-});
+  proxy: process.env.NODE_ENV === 'development'
+    ? { '/api': 'http://localhost:5000' }
+    : {},
+},
+
